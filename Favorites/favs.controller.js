@@ -1,9 +1,11 @@
 var app = angular.module("reddit");
 
-app.controller("MainCtrl", function($scope, $timeout, RedditFactory){
+app.controller("FavCtrl", function($scope, $timeout, RedditFactory){
   RedditFactory.getPosts()
     .then(function(result){
-      $timeout($scope.posts= result);
+      $timeout($scope.favorites= result.filter(function(item){
+        return item.favorite;
+      }));
     })
     .catch(function(error){
       $scope.error = "there was an error getting posts"
@@ -13,4 +15,4 @@ app.controller("MainCtrl", function($scope, $timeout, RedditFactory){
     function saveFavorites(){
       console.log($scope.posts);
     }
-});
+    });

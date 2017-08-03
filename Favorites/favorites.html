@@ -1,1 +1,6 @@
 <h1> These are your favorites! </h1>
+<section ng-repeat="post in favorites | limitTo: 10">
+    <img src="{{post.data.thumbnail}}"/>
+    <h4>{{post.data.title}}</h4>
+    <p>{{post.data.author}}</p>
+</section>
